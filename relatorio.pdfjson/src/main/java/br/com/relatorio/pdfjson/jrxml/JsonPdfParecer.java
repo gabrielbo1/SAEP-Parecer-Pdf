@@ -181,7 +181,7 @@ public class JsonPdfParecer {
 		ObjectMapper mapa = new ObjectMapper();
 		JsonPdfParecer relatorioDataBind = mapa.readValue(json, JsonPdfParecer.class);
 		
-		 JasperReport report = JasperCompileManager.compileReport(new File(".").getAbsolutePath() + "/br/com/relatorio/pdfjson/jsonPdfParecer.jrxml");
+		 JasperReport report = JasperCompileManager.compileReport(new File(".").getAbsolutePath() + "/br/com/relatorio/pdfjson/jrxml/jsonPdfParecer.jrxml");
 		
 		Map parametros = new HashMap();
 		 
