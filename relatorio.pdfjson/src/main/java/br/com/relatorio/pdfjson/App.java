@@ -1,9 +1,8 @@
 package br.com.relatorio.pdfjson;
 
-import java.io.File;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -16,13 +15,15 @@ import net.sf.jasperreports.engine.JRException;
  * Hello world!
  *
  */
-public class App 
-{
+public class App {
+	
     public static void main( String[] args ) throws JsonParseException, JsonMappingException, IOException, JRException
     {	
     	ObjectMapper mapper = new ObjectMapper();
     	
-    	JsonPdfParecer json  = mapper.readValue(new File(".").getAbsolutePath() + "/br/com/relatorio/pdfjson/Teste.json", JsonPdfParecer.class);
+    	
+    	InputStream fi = App.class.getResourceAsStream("br/com/relatorio/pdfjson/Teste.json");
+    	JsonPdfParecer json  = mapper.readValue( fi, JsonPdfParecer.class);
     	String jsonInString = mapper.writeValueAsString(json);
     	
     	java.io.File file = new java.io.File("C:\\Teste.pdf");
