@@ -1,13 +1,23 @@
 package br.com.relatorio.pdfjson.jrxml;
 
-import java.io.InputStream;
+import java.io.File;
 import java.io.IOException;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
 
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 
 /**
  * @author gabriel
@@ -165,12 +175,36 @@ public class JsonPdfParecer {
 		this.presidenteCad = presidenteCad;
 	}
 	
-	public void gerarRelatorio(String json ) throws JsonParseException, JsonMappingException, IOException{
-		ObjectMapper mapa        = new ObjectMapper();
-		JsonPdfParecer relatorio = mapa.readValue(json, JsonPdfParecer.class);
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	public byte[] gerarRelatorio(String json ) throws JsonParseException, JsonMappingException, IOException, JRException{
+	
+		ObjectMapper mapa = new ObjectMapper();
+		JsonPdfParecer relatorioDataBind = mapa.readValue(json, JsonPdfParecer.class);
 		
-		InputStream fonte = JsonPdfParecer.class.getResourceAsStream("");
+		 JasperReport report = JasperCompileManager.compileReport(new File(".").getAbsolutePath() + "/br/com/relatorio/pdfjson/jsonPdfParecer.jrxml");
 		
+		Map parametros = new HashMap();
+		 
+		 /**PARAMETROS DO RELATORIO*/
+		 parametros.put("instituto", relatorioDataBind.getInstituto());
+		 parametros.put("numProcesso", relatorioDataBind.getNumProcesso());
+		 parametros.put("sexo", relatorioDataBind.isSexo());
+		 parametros.put("sexo", relatorioDataBind.getNomeProfessor());
+		 parametros.put("nomeProfessor", relatorioDataBind.getNomeProfessor());
+		 parametros.put("letraClasse", relatorioDataBind.getLetraClasse());
+		 parametros.put("numNivel", relatorioDataBind.getNumNivel());
+		 parametros.put("cidade", relatorioDataBind.getCidade());
+		 parametros.put("estado", relatorioDataBind.getEstado());
+		 parametros.put("mes", relatorioDataBind.getMes());
+		 parametros.put("ano", relatorioDataBind.getAno());
+		 parametros.put("membroCad1", relatorioDataBind.getMembroCad1());
+		 parametros.put("membroCad2", relatorioDataBind.getMembroCad2());
+		 parametros.put("presidenteCad", relatorioDataBind.getPresidenteCad());
+		 
+		
+		JasperPrint print = JasperFillManager.fillReport(report, parametros, new JRBeanCollectionDataSource((Collection<Pontuacao>) relatorioDataBind.getListaPontuacao()));
+		 byte[] bytes = JasperExportManager.exportReportToPdf(print);
+		 return bytes;
 	}
 }
 

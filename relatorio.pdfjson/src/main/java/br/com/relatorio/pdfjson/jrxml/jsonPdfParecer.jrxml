@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
-<!-- 2016-11-29T21:18:48 -->
+<!-- 2016-12-06T20:48:52 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="jsonPdfParecer" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="522c9518-6c87-410b-bc7c-9ab5b8bf9f21">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 	<queryString>
@@ -31,7 +31,8 @@
 		<band height="88" splitType="Stretch">
 			<image>
 				<reportElement x="0" y="0" width="160" height="80" uuid="495b6797-0c4e-4ed1-96f7-da1b88457d6b"/>
-				<imageExpression><![CDATA["/home/gabriel/git/SAEP-Parecer-Pdf/relatorio.pdfjson/src/main/java/br/com/relatorio/pdfjson/jrxml/imagem/UFG_logo.svg"]]></imageExpression>
+				<imageExpression><![CDATA[
+new File(getClass().getResource("/br/com/relatorio/pdfjson/jrxml/imagem/UFG_logo.svg").toURI())]]></imageExpression>
 			</image>
 			<staticText>
 				<reportElement x="160" y="10" width="180" height="20" uuid="d417b635-3516-4522-ba03-4b8d749c4083">
@@ -166,7 +167,7 @@
 	<pageFooter>
 		<band height="171" splitType="Stretch">
 			<textField>
-				<reportElement x="0" y="0" width="250" height="21" uuid="476fd4eb-8560-4267-996a-2a8dbd959c79"/>
+				<reportElement x="0" y="0" width="400" height="21" uuid="476fd4eb-8560-4267-996a-2a8dbd959c79"/>
 				<textFieldExpression><![CDATA[$V{cidade} + " - " + $V{estado} + ", " + $V{dia} + " de "+ $V{mes} + " de " + $V{ano}]]></textFieldExpression>
 			</textField>
 			<line>
