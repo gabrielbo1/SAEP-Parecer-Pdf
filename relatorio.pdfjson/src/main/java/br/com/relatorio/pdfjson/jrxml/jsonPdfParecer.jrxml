@@ -1,166 +1,220 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
-<!-- 2016-12-06T20:48:52 -->
+<!-- 2016-12-07T14:24:43 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="jsonPdfParecer" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="522c9518-6c87-410b-bc7c-9ab5b8bf9f21">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<import value="br.com.relatorio.pdfjson.jrxml.*"/>
+	<import value="br.com.relatorio.pdfjson.jrxml.JsonPdfParecer"/>
+	<parameter name="instituto" class="java.lang.String"/>
+	<parameter name="numProcesso" class="java.lang.String"/>
+	<parameter name="nomeProfessor" class="java.lang.String"/>
+	<parameter name="sexo" class="java.lang.Boolean"/>
+	<parameter name="letraClasse" class="java.lang.String"/>
+	<parameter name="numNivel" class="java.lang.String"/>
+	<parameter name="textoRodapeDinamico" class="java.lang.String"/>
+	<parameter name="membroCad1" class="java.lang.String"/>
+	<parameter name="membroCad2" class="java.lang.String"/>
+	<parameter name="Parameter1" class="java.lang.String"/>
+	<parameter name="presidenteCad" class="java.lang.String"/>
+	<parameter name="cidade" class="java.lang.String"/>
+	<parameter name="estado" class="java.lang.String"/>
+	<parameter name="dia" class="java.lang.String"/>
+	<parameter name="mes" class="java.lang.String"/>
+	<parameter name="ano" class="java.lang.String"/>
+	<parameter name="foto" class="java.awt.Image"/>
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
 	<field name="numero" class="java.lang.String"/>
 	<field name="descricao" class="java.lang.String"/>
-	<field name="pontucao" class="java.lang.String"/>
-	<variable name="instituto" class="java.lang.String"/>
-	<variable name="numProcesso" class="java.lang.String"/>
-	<variable name="nomeProfessor" class="java.lang.String"/>
-	<variable name="sexo" class="java.lang.Boolean"/>
-	<variable name="letraClasse" class="java.lang.String"/>
-	<variable name="numNivel" class="java.lang.String"/>
-	<variable name="textoRodapeDinamico" class="java.lang.String"/>
-	<variable name="mebroCad1" class="java.lang.String"/>
-	<variable name="membroCad2" class="java.lang.String"/>
-	<variable name="presidenteCad" class="java.lang.String"/>
-	<variable name="cidade" class="java.lang.String"/>
-	<variable name="estado" class="java.lang.String"/>
-	<variable name="dia" class="java.lang.String"/>
-	<variable name="mes" class="java.lang.String"/>
-	<variable name="ano" class="java.lang.String"/>
+	<field name="pontuacao" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<pageHeader>
-		<band height="88" splitType="Stretch">
-			<image>
-				<reportElement x="0" y="0" width="160" height="80" uuid="495b6797-0c4e-4ed1-96f7-da1b88457d6b"/>
-				<imageExpression><![CDATA[
-new File(getClass().getResource("/br/com/relatorio/pdfjson/jrxml/imagem/UFG_logo.svg").toURI())]]></imageExpression>
-			</image>
+		<band height="98" splitType="Stretch">
 			<staticText>
-				<reportElement x="160" y="10" width="180" height="20" uuid="d417b635-3516-4522-ba03-4b8d749c4083">
+				<reportElement x="160" y="0" width="180" height="20" uuid="d417b635-3516-4522-ba03-4b8d749c4083">
 					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
 				</reportElement>
 				<textElement textAlignment="Left">
-					<font fontName="Times New Roman" size="14"/>
+					<font fontName="Times New Roman" size="12"/>
 				</textElement>
 				<text><![CDATA[Serviço Público Federal]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="160" y="30" width="180" height="20" uuid="cab312c5-a4d2-440c-b030-69c8db879a9d">
+				<reportElement x="160" y="20" width="180" height="20" uuid="cab312c5-a4d2-440c-b030-69c8db879a9d">
 					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
 				</reportElement>
 				<textElement textAlignment="Left">
-					<font fontName="Times New Roman" size="14"/>
+					<font fontName="Times New Roman" size="12"/>
 				</textElement>
 				<text><![CDATA[Universidade Federal de Goiás]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="380" y="10" width="175" height="20" uuid="f179b8e2-4428-4145-bc22-3ee9c2aa80ab">
+				<reportElement x="380" y="0" width="175" height="20" uuid="f179b8e2-4428-4145-bc22-3ee9c2aa80ab">
 					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
 				</reportElement>
 				<textElement textAlignment="Left">
-					<font fontName="Times New Roman" size="14"/>
+					<font fontName="Times New Roman" size="12"/>
 				</textElement>
 				<text><![CDATA[Rubrica:  ________________]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="380" y="30" width="175" height="20" uuid="f1c0a146-73d3-49ff-8027-f3779ea606d2">
+				<reportElement x="380" y="20" width="175" height="20" uuid="f1c0a146-73d3-49ff-8027-f3779ea606d2">
 					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
 				</reportElement>
 				<textElement textAlignment="Left">
-					<font fontName="Times New Roman" size="14"/>
+					<font fontName="Times New Roman" size="12"/>
 				</textElement>
 				<text><![CDATA[Folha:     ________________]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" x="380" y="50" width="60" height="20" uuid="5552833b-d84a-4e2a-857e-56a211f29ee1">
+				<reportElement positionType="Float" x="380" y="40" width="60" height="20" uuid="5552833b-d84a-4e2a-857e-56a211f29ee1">
 					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
 				</reportElement>
 				<textElement textAlignment="Left">
-					<font fontName="Times New Roman" size="14"/>
+					<font fontName="Times New Roman" size="12"/>
 				</textElement>
 				<text><![CDATA[Processo:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="440" y="50" width="114" height="20" uuid="28811f97-a706-483e-8407-7e67122c356b"/>
-				<textFieldExpression><![CDATA[$V{numProcesso}]]></textFieldExpression>
+				<reportElement x="440" y="40" width="114" height="20" uuid="28811f97-a706-483e-8407-7e67122c356b"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{numProcesso}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="160" y="50" width="180" height="20" uuid="a0f7cc26-9acf-4aaf-9bd1-8b382fdb78b6"/>
-				<textFieldExpression><![CDATA[$V{instituto}]]></textFieldExpression>
+				<reportElement x="160" y="40" width="180" height="20" uuid="a0f7cc26-9acf-4aaf-9bd1-8b382fdb78b6"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{instituto}]]></textFieldExpression>
 			</textField>
+			<image isUsingCache="true">
+				<reportElement x="-1" y="0" width="161" height="98" uuid="1f73e863-9b32-4542-9d1f-81d3b59aa34b"/>
+				<imageExpression><![CDATA[$P{foto}]]></imageExpression>
+			</image>
 		</band>
 	</pageHeader>
 	<columnHeader>
-		<band height="155" splitType="Stretch">
+		<band height="199" splitType="Stretch">
 			<textField>
 				<reportElement x="0" y="10" width="555" height="20" uuid="22812cb8-d8af-4ae8-9995-47f0c3aa6253"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
 				<textFieldExpression><![CDATA["Senhor presidente, senhores(as) Conselheiros(as),"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="0" y="50" width="555" height="50" uuid="d7fb4ed2-44ba-4e9f-9f42-a2b24b2367e9"/>
-				<textFieldExpression><![CDATA["O presente relato é pertinente à solicitação " + ($V{sexo} == true ? "do Professor " : "da Professora ") +  $V{nomeProfessor} +" de progressão funcional, da classe " + $V{letraClasse} + " nível " + $V{numNivel} + ", na Carreira do Magistério Superior, segundo os termos da Resolução CONSUNI Nº32/2013, versão reeditada com a redação dada pela Resolução CONSUNI Nº 33/2014, por ter cumprido um interstício de 2 anos de 9 março de 2014 a 8 de março de 2016, desde a última progressão."]]></textFieldExpression>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["O presente relato é pertinente à solicitação " + ($P{sexo} == true ? "do Professor " : "da Professora " ) +  $P{nomeProfessor} +" de progressão funcional, da classe " + $P{letraClasse} + " nível " + $P{numNivel} + ", na Carreira do Magistério Superior, segundo os termos da Resolução CONSUNI Nº32/2013, versão reeditada com a redação dada pela Resolução CONSUNI Nº 33/2014, por ter cumprido um interstício de 2 anos de 9 março de 2014 a 8 de março de 2016, desde a última progressão."]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="0" y="120" width="555" height="30" uuid="39e9166e-b76b-4274-8136-3a178a27a2f5"/>
-				<textElement textAlignment="Justified"/>
-				<textFieldExpression><![CDATA[($V{sexo} == true ? "O Professor." : "A Professora. " ) +  $V{nomeProfessor} + " atende aos requisitos listados no Artigo 27 da supracitada resolução, os quais dispõem"]]></textFieldExpression>
+				<textElement textAlignment="Justified">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($P{sexo} == true ? "O Professor." : "A Professora. " ) +  $P{nomeProfessor} + " atende aos requisitos listados no Artigo 27 da supracitada resolução, os quais dispõem"]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement x="0" y="185" width="49" height="14" uuid="0ab5fb9b-5665-45a9-a246-0635bf16fda9"/>
+				<box>
+					<pen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<text><![CDATA[Numero]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="49" y="185" width="431" height="14" uuid="664d3515-9af2-4a04-b863-6bbea8d3839f"/>
+				<box>
+					<pen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<text><![CDATA[Descrição]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="170" width="140" height="19" uuid="bf666b16-88af-456a-a09f-f6a72fab9766"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Exigências do Artigo 27"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="450" y="166" width="104" height="19" uuid="d83faf6e-8423-4439-942f-cdafdb72d087"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Pontuação obtida"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="480" y="185" width="75" height="14" uuid="ba82a1a6-e5a1-4d8e-8781-5137e7650f09"/>
+				<box>
+					<pen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<text><![CDATA[Pontuação]]></text>
+			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="87" splitType="Stretch">
-			<line>
-				<reportElement x="0" y="10" width="555" height="1" uuid="60e7d1e4-94c0-4f58-9950-c6390f446256"/>
-			</line>
+		<band height="18" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 			<textField>
-				<reportElement x="451" y="11" width="104" height="19" uuid="d83faf6e-8423-4439-942f-cdafdb72d087"/>
-				<textFieldExpression><![CDATA["Pontuação obtida"]]></textFieldExpression>
-			</textField>
-			<line>
-				<reportElement x="0" y="30" width="555" height="1" uuid="3ff93160-e136-410c-b4c7-0fa945c08435"/>
-			</line>
-			<textField>
-				<reportElement x="5" y="10" width="140" height="19" uuid="bf666b16-88af-456a-a09f-f6a72fab9766"/>
-				<textFieldExpression><![CDATA["Exigências do Artigo 27"]]></textFieldExpression>
-			</textField>
-			<line>
-				<reportElement x="1" y="80" width="555" height="1" uuid="e5d5bb3c-9f17-43df-83f4-50f05fdc39f0"/>
-			</line>
-			<textField>
-				<reportElement x="0" y="60" width="49" height="18" uuid="c6b9262e-d34e-4622-879a-225c59f6d109"/>
+				<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="49" height="18" uuid="c6b9262e-d34e-4622-879a-225c59f6d109"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{numero}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="49" y="60" width="431" height="18" uuid="5efe9304-097a-4f38-a441-bb5820a1cf09"/>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="49" y="0" width="431" height="18" uuid="5efe9304-097a-4f38-a441-bb5820a1cf09"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{descricao}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="480" y="60" width="75" height="18" uuid="e2955aec-0422-4ac8-b0dd-bf2021b0e1f0"/>
-				<textFieldExpression><![CDATA[$F{pontucao}]]></textFieldExpression>
+				<reportElement stretchType="RelativeToBandHeight" x="480" y="0" width="75" height="18" uuid="e2955aec-0422-4ac8-b0dd-bf2021b0e1f0"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pontuacao}]]></textFieldExpression>
 			</textField>
-			<staticText>
-				<reportElement x="1" y="46" width="48" height="14" uuid="0ab5fb9b-5665-45a9-a246-0635bf16fda9"/>
-				<text><![CDATA[numero]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="49" y="46" width="431" height="14" uuid="664d3515-9af2-4a04-b863-6bbea8d3839f"/>
-				<text><![CDATA[descricao]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="480" y="46" width="75" height="14" uuid="ba82a1a6-e5a1-4d8e-8781-5137e7650f09"/>
-				<text><![CDATA[pontuação]]></text>
-			</staticText>
 		</band>
 	</detail>
 	<columnFooter>
 		<band height="56" splitType="Stretch">
 			<textField>
 				<reportElement x="0" y="0" width="555" height="56" uuid="49da64b8-54c2-4ee0-bafe-2e2e5aa25caa"/>
-				<textFieldExpression><![CDATA[$V{textoRodapeDinamico}]]></textFieldExpression>
+				<textElement textAlignment="Justified">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{textoRodapeDinamico}]]></textFieldExpression>
 			</textField>
 		</band>
 	</columnFooter>
@@ -168,7 +222,10 @@ new File(getClass().getResource("/br/com/relatorio/pdfjson/jrxml/imagem/UFG_logo
 		<band height="171" splitType="Stretch">
 			<textField>
 				<reportElement x="0" y="0" width="400" height="21" uuid="476fd4eb-8560-4267-996a-2a8dbd959c79"/>
-				<textFieldExpression><![CDATA[$V{cidade} + " - " + $V{estado} + ", " + $V{dia} + " de "+ $V{mes} + " de " + $V{ano}]]></textFieldExpression>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{cidade} + " - " + $P{estado} + ", " + $P{dia} + " de "+ $P{mes} + " de " + $P{ano}]]></textFieldExpression>
 			</textField>
 			<line>
 				<reportElement x="6" y="57" width="139" height="1" uuid="dc9645cd-8bfc-4dff-b7a5-766ac71e5fb6"/>
@@ -183,27 +240,45 @@ new File(getClass().getResource("/br/com/relatorio/pdfjson/jrxml/imagem/UFG_logo
 			</line>
 			<textField>
 				<reportElement x="30" y="80" width="100" height="20" uuid="75b03c7c-c0df-4cd6-a8ca-22864535d2d9"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
 				<textFieldExpression><![CDATA["Membro da CAD"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="371" y="80" width="116" height="20" uuid="66d06ec8-a455-4094-9a07-f5d9c6c6e00d"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
 				<textFieldExpression><![CDATA["Membro da CAD"]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="240" y="139" width="92" height="20" uuid="7775ca35-d5a6-48e1-954e-eacf7db316d0"/>
+				<reportElement x="210" y="139" width="150" height="20" uuid="7775ca35-d5a6-48e1-954e-eacf7db316d0"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
 				<textFieldExpression><![CDATA["Presidente da CAD"]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="30" y="60" width="100" height="20" uuid="287e1cef-cdce-4933-93cb-ba29fd139b34"/>
-				<textFieldExpression><![CDATA[$V{mebroCad1}]]></textFieldExpression>
+				<reportElement x="6" y="60" width="174" height="20" uuid="287e1cef-cdce-4933-93cb-ba29fd139b34"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{membroCad1}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="371" y="60" width="116" height="20" uuid="c109b7fd-912d-47ed-ab8f-334033a6f6a0"/>
-				<textFieldExpression><![CDATA[$V{membroCad2}]]></textFieldExpression>
+				<reportElement x="360" y="60" width="185" height="20" uuid="c109b7fd-912d-47ed-ab8f-334033a6f6a0"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{membroCad2}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="240" y="110" width="92" height="29" uuid="0b14d86d-9723-46ee-bfad-a25822b80445"/>
-				<textFieldExpression><![CDATA[$V{presidenteCad}]]></textFieldExpression>
+				<reportElement x="210" y="110" width="180" height="29" uuid="0b14d86d-9723-46ee-bfad-a25822b80445"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{presidenteCad}]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageFooter>
