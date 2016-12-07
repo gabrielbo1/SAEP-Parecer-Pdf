@@ -41,7 +41,7 @@
 		"pontuacao": "PONTUACAO 2"
 	}]
   ```
-  #### Na variavel boolean devera ser passado true para Masculino e false para Feminio, veja casos de teste JsonPdfParecerTest2 & JsonPdfParecerTest3: 
+##### Na variavel boolean devera ser passado true para Masculino e false para Feminio, veja casos de teste JsonPdfParecerTest2 & JsonPdfParecerTest3: 
   ```json
   "sexo": true
   ```
