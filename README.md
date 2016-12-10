@@ -3,12 +3,12 @@
 -----------------------------------------------------------------------------
 
 ##### Para ultilizar esta API basta clonar o projeto e gerar o jar do mesmo, apos isso adcione o memo ao Classpath do seu projeto.
-![Jasper Report](https://lh4.googleusercontent.com/wXSik9sjjdotJzEjfGfPcxMgLeyWhMxGFNQTbIgdWqbvDdbM6pUrJosoGwzsoONhAK_j_OfvhaIYCZ8=w1301-h654-rw)
+![Jasper Report](https://lh4.googleusercontent.com/BTBRMpgxBunBc_GcVkVKV0LXY3CNTXr-S2LrtKmQO1lYmsBz429jluw7YZtKZutgU27g3nGIKsTgk10=w1301-h654-rw)
 
 #### Após isso baixe o plugin do JasperStudio no seu Eplipse, para copilar o arquivo JRXML a nescessida de copilar para evitar erros inesperados(SAEP-Parecer-Pdf/relatorio.pdfjson/src/main/java/br/com/relatorio/pdfjson/jrxml/jsonPdfParecer.jrxml).
 ##### Após instalar o plugin basta abrir o arquivo e clicar na opção "compile Report", que esta na parte superior da janela ao lado da ferramentas de zoom.
 
-![Copilar o .japer](https://lh4.googleusercontent.com/z_UstreKHP9cLgf1Lq-9CQ90KVjjrb2mP2SFc_Rvg9OFuY7C6oURGZMiJOH0tuOWENptx9xaV4enUgU=w1301-h654-rw)
+![Copilar o .japer](https://lh6.googleusercontent.com/zknIFzEf0KCIC33w6JW7ThcimS7R3ANdXJ_oO3TPPiU8px2Ejcz4yWfSnbT7LkoRdasbXtgit_X58uQ=w1301-h654-rw)
 -----------------------------------------------------------------------------
 
 # *API br.com.relatorio.pdfjson.jrxml.JsonPdfParecer / public byte[] gerarRelatorio(String json)*
