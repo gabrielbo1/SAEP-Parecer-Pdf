@@ -3,11 +3,11 @@
 -----------------------------------------------------------------------------
 
 ##### Para ultilizar esta API basta clonar o projeto e gerar o jar do mesmo, apos isso adcione o memo ao Classpath do seu projeto.
+
+#### Caso o projeto apresente qualquer a exeção( JRException ),  baixe o plugin do JasperStudio no seu Eplipse, para copilar o arquivo JRXML a nescessida de copilar para evitar erros inesperados(SAEP-Parecer-Pdf/relatorio.pdfjson/src/main/java/br/com/relatorio/pdfjson/jrxml/jsonPdfParecer.jrxml).
 ![Jasper Report](https://raw.githubusercontent.com/gabrielbo1/SAEP-Parecer-Pdf/master/relatorio.pdfjson/ImagemManual/jasperStudio.png)
 
-#### Após isso baixe o plugin do JasperStudio no seu Eplipse, para copilar o arquivo JRXML a nescessida de copilar para evitar erros inesperados(SAEP-Parecer-Pdf/relatorio.pdfjson/src/main/java/br/com/relatorio/pdfjson/jrxml/jsonPdfParecer.jrxml).
 ##### Após instalar o plugin basta abrir o arquivo e clicar na opção "compile Report", que esta na parte superior da janela ao lado da ferramentas de zoom.
-
 ![Copilar o .japer](https://raw.githubusercontent.com/gabrielbo1/SAEP-Parecer-Pdf/master/relatorio.pdfjson/ImagemManual/telaJasper.png)
 -----------------------------------------------------------------------------
 
